@@ -47,10 +47,16 @@ public class Character {
     }
 
     public void Attack(){}
+    
     public void SpecialAction(){}
+    
     public void Pick(){}
+    
     public void Wield(){}
+    
     public void Wear(){}
+    
     public void Examine(){}
+    
     public void ListInventory(){}
 }
