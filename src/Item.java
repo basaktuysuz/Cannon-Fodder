@@ -5,6 +5,11 @@ public class Item {
     private String name;
     private int weight;
     private int value;
+    public Item(){
+        name=null;
+        weight=0;
+        value=0;
+    }
 
     public Item(String name, int weight, int value) {
         this.name = name;
