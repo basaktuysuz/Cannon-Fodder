@@ -3,6 +3,7 @@ public class Character {
     protected int vitality;
     protected int intelligence;
     protected int HP;
+    private Weapons weapon;
 
     public Character() {
         HP = (int) (0.7 * vitality + 0.2 * strength * 0.1 * intelligence);
@@ -43,7 +44,8 @@ public class Character {
         return HP;
     }
 
-    public void Attack() {
+    public int Attack() {
+        return weapon.getDamage();
     }
 
     public void SpecialAction() {
