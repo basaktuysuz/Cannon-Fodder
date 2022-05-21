@@ -4,6 +4,7 @@ public class Character {
     protected int intelligence;
     protected int HP;
     private Weapons weapon;
+    private Clothing clothing;
 
     public Character() {
         HP = (int) (0.7 * vitality + 0.2 * strength * 0.1 * intelligence);
@@ -52,14 +53,28 @@ public class Character {
         System.out.println("Hero's special ability is activated !!!");
     }
 
+    public Weapons getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapons weapon) {
+        this.weapon = weapon;
+    }
+
+    public Clothing getClothing() {
+        return clothing;
+    }
+
+    public void setClothing(Clothing clothing) {
+        this.clothing = clothing;
+    }
+
     public void Pick() {
     }
 
     public void Wield() {
     }
 
-    public void Wear() {
-    }
 
     public void Examine() {
     }
