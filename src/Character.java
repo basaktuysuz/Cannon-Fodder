@@ -1,8 +1,47 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Character {
     Scanner input = new Scanner(System.in);
-    protected int healerStrength;
+
+
+    protected int strength;
+    protected int intelligence;
+    protected int vitality;
+
+    protected Weapons[] weaponOnHand= new Weapons[1];
+    protected Clothing[] clothingOnTheChar= new Clothing[1];
+    protected ArrayList<Item> Inventory=new ArrayList<>();
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getVitality() {
+        return vitality;
+    }
+
+    public void setVitality(int vitality) {
+        this.vitality = vitality;
+    }
+
+
+
+
+
+    /*protected int healerStrength;
     protected int healerVitality;
     protected int healerIntelligence;
     protected int tankStrength;
@@ -19,9 +58,10 @@ public class Character {
     protected int enemyIntelligence;
     protected int enemyStrength;
     protected int enemyVitalty;
-    protected int enemyNumber;
+    protected int enemyNumber;*/
 
-    public int getEnemyNumber() {
+
+    /*public int getEnemyNumber() {
         return enemyNumber;
     }
 
@@ -164,22 +204,46 @@ public class Character {
 
     public void setFighterHP(int fighterHP) {
         this.fighterHP = fighterHP;
-    }
+    }*/
 
-    public Character() {
+    public Character(){
     }
 
     public void Attack(){}
 
-    public void Pick(){}
+    public void Pick(Item item){
+        int sumWeight=0;
+        for(int i=0;i<Inventory.size();i++){
+            sumWeight= sumWeight +Inventory.get(i).getWeight();
+        }
+        if(sumWeight+ item.getWeight()<strength){
+            Inventory.add(item);
+        }
+        else{
+            System.out.println("You cannot pick this item. Your Inventory is full");
+            System.out.println("If you want this item please drop some items");//drop için yeni bir metod lazım
+        }
 
-    public void Wield(){}
+    }
 
-    public void Wear(){}
+    public void Wield(Weapons weapons){
+        weaponOnHand[1]=weapons;
+    }
 
-    public void Examine(){}
+    public void Wear(Clothing clothing){
+        clothingOnTheChar[1]=clothing;
+    }
+
+    public void Examine(Item item){
+        item.display();
+    }
 
     public void specialAction(){}
 
-    public void ListInventory(){}
+    public void ListInventory(){
+        for(int i=0;i<Inventory.size();i++){
+            Inventory.get(i).display();
+        }
+
+    }
 }

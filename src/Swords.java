@@ -22,7 +22,7 @@ public class Swords extends Weapons{
     }
 
     public static Swords newLongSword() {
-        return new Swords("Kiyanite Sword",2,4,4,"Long Sword");
+        return new Swords("Kyanite Sword",2,4,4,"Long Sword");
     }
 
     public static Swords newScimitarSword() {
