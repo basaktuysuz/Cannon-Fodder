@@ -12,30 +12,6 @@ public class Item {
         this.value = value;
     }
 
-    public static Item newRandomItem() {
-        Random rand = new Random();
-        int random = rand.nextInt(5) + 1;
-        Item item = null;
-        switch (random) {
-            case 1:
-                item = newCopper();
-                break;
-            case 2:
-                item = newSilver();
-                break;
-            case 3:
-                item = newGold();
-                break;
-            case 4:
-                item = newPlatinum();
-                break;
-            case 5:
-                item = newDiamond();
-                break;
-        }
-        return item;
-    }
-
     public static Item newCopper() {
         return new Item("Copper",1,10);
     }
