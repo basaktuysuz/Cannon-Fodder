@@ -1,11 +1,6 @@
 public class Swords extends Weapons{
 
     private String swordType;
-    public Swords(){
-        super();
-        swordType=null;
-
-    }
 
 
     public Swords(String name, int weight, int value, int damage, String swordType) {
@@ -27,12 +22,10 @@ public class Swords extends Weapons{
     }
 
     public static Swords newLongSword() {
-        return new Swords("Kyanite Sword",2,4,4,"Long Sword");
+        return new Swords("Kiyanite Sword",2,4,4,"Long Sword");
     }
 
     public static Swords newScimitarSword() {
         return new Swords("Lion Sword",4,9,5,"Scimitar ");
     }
-
-
 }

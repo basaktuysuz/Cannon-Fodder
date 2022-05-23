@@ -1,92 +1,185 @@
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Character {
-    protected int strength;
-    protected int vitality;
-    protected int intelligence;
-    protected int HP;
-    protected Weapons[] weaponOnHand= new Weapons[1];
-    protected Clothing[] clothsThatCharWears= new Clothing[1];
+    Scanner input = new Scanner(System.in);
+    protected int healerStrength;
+    protected int healerVitality;
+    protected int healerIntelligence;
+    protected int tankStrength;
+    protected int tankVitality;
+    protected int tankIntelligence;
+    protected int fighterStrength;
+    protected int fighterVitality;
+    protected int fighterIntelligence;
+    protected int healerHP;
+    protected int tankHP;
+    protected int fighterHP;
+    protected int givenHeal;
+    protected int enemyHP;
+    protected int enemyIntelligence;
+    protected int enemyStrength;
+    protected int enemyVitalty;
+    protected int enemyNumber;
+
+    public int getEnemyNumber() {
+        return enemyNumber;
+    }
+
+    public void setEnemyNumber(int enemyNumber) {
+        this.enemyNumber = enemyNumber;
+    }
+
+    public int getEnemyHP() {
+        return enemyHP;
+    }
+
+    public void setEnemyHP(int enemyHP) {
+        this.enemyHP = enemyHP;
+    }
+
+    public int getEnemyIntelligence() {
+        return enemyIntelligence;
+    }
+
+    public void setEnemyIntelligence(int enemyIntelligence) {
+        this.enemyIntelligence = enemyIntelligence;
+    }
+
+    public int getEnemyStrength() {
+        return enemyStrength;
+    }
+
+    public void setEnemyStrength(int enemyStrength) {
+        this.enemyStrength = enemyStrength;
+    }
+
+    public int getEnemyVitalty() {
+        return enemyVitalty;
+    }
+
+    public void setEnemyVitalty(int enemyVitalty) {
+        this.enemyVitalty = enemyVitalty;
+    }
+
+    public int getGivenHeal() {
+        return givenHeal;
+    }
+
+    public void setGivenHeal(int givenHeal) {
+        this.givenHeal = givenHeal;
+    }
 
 
+    public int getHealerStrength() {
+        return healerStrength;
+    }
+
+    public void setHealerStrength(int healerStrength) {
+        this.healerStrength = healerStrength;
+    }
+
+    public int getHealerVitality() {
+        return healerVitality;
+    }
+
+    public void setHealerVitality(int healerVitality) {
+        this.healerVitality = healerVitality;
+    }
+
+    public int getHealerIntelligence() {
+        return healerIntelligence;
+    }
+
+    public void setHealerIntelligence(int healerIntelligence) {
+        this.healerIntelligence = healerIntelligence;
+    }
+
+    public int getTankStrength() {
+        return tankStrength;
+    }
+
+    public void setTankStrength(int tankStrength) {
+        this.tankStrength = tankStrength;
+    }
+
+    public int getTankVitality() {
+        return tankVitality;
+    }
+
+    public void setTankVitality(int tankVitality) {
+        this.tankVitality = tankVitality;
+    }
+
+    public int getTankIntelligence() {
+        return tankIntelligence;
+    }
+
+    public void setTankIntelligence(int tankIntelligence) {
+        this.tankIntelligence = tankIntelligence;
+    }
+
+    public int getFighterStrength() {
+        return fighterStrength;
+    }
+
+    public void setFighterStrength(int fighterStrength) {
+        fighterStrength = fighterStrength;
+    }
+
+    public int getFighterVitality() {
+        return fighterVitality;
+    }
+
+    public void setFighterVitality(int fighterVitality) {
+        this.fighterVitality = fighterVitality;
+    }
+
+    public int getFighterIntelligence() {
+        return fighterIntelligence;
+    }
+
+    public void setFighterIntelligence(int fighterIntelligence) {
+        this.fighterIntelligence = fighterIntelligence;
+    }
+
+    public int getHealerHP() {
+        return healerHP;
+    }
+
+    public void setHealerHP(int healerHP) {
+        this.healerHP = healerHP;
+    }
+
+    public int getTankHP() {
+        return tankHP;
+    }
+
+    public void setTankHP(int tankHP) {
+        this.tankHP = tankHP;
+    }
+
+    public int getFighterHP() {
+        return fighterHP;
+    }
+
+    public void setFighterHP(int fighterHP) {
+        this.fighterHP = fighterHP;
+    }
 
     public Character() {
-        HP=(int)(Math.random()*(0.7 * vitality + 0.2 * strength * 0.1 * intelligence-1))+1;
     }
 
-    public Character(int strength, int vitality, int intelligence) {
-        this.strength = strength;
-        this.vitality = vitality;
-        this.intelligence = intelligence;
-        HP=(int)(Math.random()*(0.7 * vitality + 0.2 * strength * 0.1 * intelligence-1))+1;
-    }
+    public void Attack(){}
 
-    public int getStrength() {
-        return strength;
-    }
+    public void Pick(){}
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
+    public void Wield(){}
 
-    public int getVitality() {
-        return vitality;
-    }
+    public void Wear(){}
 
-    public void setVitality(int vitality) {
-        this.vitality = vitality;
-    }
+    public void Examine(){}
 
-    public int getIntelligence() {
-        return intelligence;
-    }
+    public void specialAction(){}
 
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
-
-    public double getHP() {
-        return HP;
-    }
-
-    public int Attack() {
-        return(strength+weaponOnHand[0].getDamage());
-    }
-
-    public void SpecialAction() {
-        System.out.println("Hero's special ability is activated !!!");
-        if(weaponOnHand[0].equals(new Swords())){
-
-        }
-        if(weaponOnHand[0].equals(new Shields())){
-
-        }
-    }
-
-    public void Pick() {
-    }
-
-    public void Wield(Weapons weapon) { weaponOnHand[0]=weapon;
-        System.out.println("Your character now wields");
-        weaponOnHand[0].display();
-    }
-
-    public void Wear(Clothing cloth) { clothsThatCharWears[0]=cloth;
-        System.out.println("Your character now wears");
-        clothsThatCharWears[0].display();
-    }
-
-    public void Examine() {
-    }
-
-    public void ListInventory() {
-    }
-    public void printInfo(){
-        System.out.println("Strenght:"+strength);
-
-    }
-    public int GetDamage(){
-        HP=HP-Attack();//sorun var burada saldıranın attackini almam lazım ama onu daha yapamadım
-        return(HP);
-    }
+    public void ListInventory(){}
 }

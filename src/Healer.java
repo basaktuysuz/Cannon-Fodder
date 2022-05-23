@@ -1,40 +1,37 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Healer extends Character {
+
+    Scanner input = new Scanner(System.in);
     private int max1=8,max2=6,max3=11;
     private int min1=3,min2=1,min3=6;
-    private int heal;
-    private int remainingHP;
 
     public Healer(){
 
         Random rand = new Random();
 
-        strength = rand.nextInt(max1-min1 )+min1 ;
-        vitality = rand.nextInt(max2-min2 )+min2 ;
-        intelligence = rand.nextInt(max3-min3 )+min3 ;
-        HP=(int)(0.7*vitality+0.2*strength*0.1*intelligence);
-        System.out.println(HP);
-        remainingHP=HP-1;
-        System.out.println(remainingHP);
-
-
+        healerStrength = rand.nextInt(max1-min1 )+min1 ;
+        healerVitality = rand.nextInt(max2-min2 )+min2 ;
+        healerIntelligence = rand.nextInt(max3-min3 )+min3 ;
+        healerHP=(int)(0.7*healerVitality+0.2*healerStrength*0.1*healerIntelligence);
+        System.out.println("Healer created with "+healerHP+" HP! " );
+        System.out.println("Healer created with "+healerIntelligence+" int! " );
     }
-    public void specialAction(){
-        super.SpecialAction();
-        heal=(int) (1+0.1*intelligence);
-        if(heal+remainingHP>HP){
-            HP=heal+remainingHP;
-            System.out.println(HP);}
-        else{
-            HP=heal+remainingHP;
-            System.out.println(HP);
-        }
+    public void specialAction() {
+        givenHeal = healerIntelligence * 1;
+        System.out.println(givenHeal + " HP given to healer.");
 
     }
 
+    public void specialAction(Tank tank1) {
+        givenHeal = healerIntelligence * 1;
+        System.out.println(givenHeal + " given to the Tank.");
+    }
 
-
-
+    public void specialAction(Fighter fighter1) {
+        givenHeal = healerIntelligence * 1;
+        System.out.println(givenHeal + " given to the Fighter.");
+    }
 
 }
