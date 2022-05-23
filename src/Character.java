@@ -100,9 +100,7 @@ public class Character {
         this.clothing = clothing;
     }
 
-    public void Pick() {
-    }
-
+    
     public void Wield() {
     }
 
