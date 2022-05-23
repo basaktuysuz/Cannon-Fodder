@@ -2,11 +2,6 @@ public class Wands extends Weapons {
 
     private String wandsType;
     private int healPoint;
-    public Wands(){
-        super();
-        wandsType=null;
-        healPoint=0;
-    }
 
     public Wands(String name, int weight, int value, int damage, int healPoint, String wandsType) {
         super(name, weight, value, damage);

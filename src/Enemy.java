@@ -1,17 +1,32 @@
-import java.util.Random;
 
 public class Enemy extends Character{
-    private int max1=6,max2=6,max3=6;
-    private int min1=1,min2=1,min3=1;
-
-
-    public Enemy(){
-        Random rand = new Random();
-        healerStrength = rand.nextInt(max1-min1 )+min1 ;
-        healerVitality = rand.nextInt(max2-min2 )+min2 ;
-        healerIntelligence = rand.nextInt(max3-min3 )+min3 ;
-        healerHP=(int)(0.7*healerVitality+0.2*healerStrength*0.1*healerIntelligence);
-        System.out.println("Enemies created with "+enemyHP+" HP! " );
-
+    private int percentage;
+    public Enemy() {
+       strength=(int)(Math.random()*4+1);
+       vitality=(int)(Math.random()*4+1);
+       intelligence=(int)(Math.random()*4+1);
+       HP=(int)(Math.random()*(0.7*vitality+0.2*strength+0.1*intelligence-1)+1);
     }
+    public int getPercentage() {
+        return percentage;
+    }
+    public void setPercentage(){
+    percentage= (int)(Math.random()*9+1);
+    }
+   public void Wield(){
+        if(getPercentage()==1){
+            weaponOnHand[0]=new Shields("Aegis Shield", 2, 4, 4, "Small Shield");
+        }
+        else if(getPercentage()==2){
+            weaponOnHand[0]=new Wands("Chestnut", 6, 4, 7, 6, "Wood Wand");
+        }
+        else{
+            weaponOnHand[0]=new Swords("Kyanite Sword",2,4,4,"Long Sword");
+        }
+
+
+   }
+
+
+
 }
