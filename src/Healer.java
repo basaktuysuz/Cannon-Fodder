@@ -34,10 +34,4 @@ public class Healer extends Character {
         System.out.println(givenHeal + " given to the Fighter.");
     }
 
-
-
-
-
-
-
 }
