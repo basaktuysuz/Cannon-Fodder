@@ -6,6 +6,10 @@ public class Shields extends Weapons {
         super(name, weight, value, damage);
         this.shieldsType = shieldsType;
     }
+    public Shields(){
+        super();
+        shieldsType=null;
+    }
 
     public String getShieldsType() {
         return shieldsType;

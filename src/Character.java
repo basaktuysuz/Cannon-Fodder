@@ -1,3 +1,5 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -59,7 +61,11 @@ public class Character {
 
 
 
-    public void Attack(Character character){}
+    public void Attack(Character doingTheAttack,Character ReceivingTheAttack ){
+        ReceivingTheAttack.HP=ReceivingTheAttack.HP-(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.strength);
+        System.out.println("Your damage caused "+(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.strength)+" HP to the character" );
+        System.out.println("Their HP is now "+ ReceivingTheAttack.HP);
+    }
 
     public void Pick(Item item){
         int sumWeight=0;
@@ -75,13 +81,33 @@ public class Character {
         }
 
     }
+    public void dropItem(){
+        ListInventory();
+        System.out.println("Enter the name of the item you want to drop");
+        String itemName=input.nextLine();
+        boolean found=false;
+        for(int i=0;i<Inventory.size();i++){
+            if(Inventory.get(i).getName().equals(itemName)){
+                found=true;
+                Inventory.remove(i);
+                break;
+            }
+        }
+        if(found==true){
+            System.out.println("The item is successfully removed");
+        }
+        else{
+            System.out.println("We couldn't find that item in your inventory");
+        }
+
+    }
 
     public void Wield(Weapons weapons){
-        weaponOnHand[1]=weapons;
+        weaponOnHand[0]=weapons;
     }
 
     public void Wear(Clothing clothing){
-        clothingOnTheChar[1]=clothing;
+        clothingOnTheChar[0]=clothing;
     }
 
     public void Examine(Item item){
@@ -90,8 +116,9 @@ public class Character {
 
     public void specialAction(Character character){
         if(character.weaponOnHand[0].equals(new Swords())){
-            System.out.println("How many turns you want to be stay away from fight(Max can be 4)");
-            int turns=input.nextInt();
+
+        }
+        if(character.weaponOnHand[0].equals(new Shields())){
 
         }
     }
