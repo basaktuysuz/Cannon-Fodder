@@ -11,20 +11,17 @@ public class Healer extends Character {
         System.out.println("Healer created with "+HP+" HP! " );
         System.out.println("Healer created with "+intelligence+" int! " );
     }
-    public void specialAction() {
+    public void specialAction(Character character){
         givenHeal = intelligence * 1;
-        System.out.println(givenHeal + " HP given to healer.");
+        if(givenHeal+character.HP<(int)(character.intelligence*0.1+character.vitality*0.7+character.strength*0.2)){
+        character.HP=character.HP+givenHeal;}
+        else{
+            character.HP=(int)(character.intelligence*0.1+character.vitality*0.7+character.strength*0.2);
+        }
 
     }
 
-    public void specialAction(Tank tank1) {
-        givenHeal = intelligence * 1;
-        System.out.println(givenHeal + " given to the Tank.");
-    }
 
-    public void specialAction(Fighter fighter1) {
-        givenHeal = intelligence * 1;
-        System.out.println(givenHeal + " given to the Fighter.");
-    }
+
 
 }

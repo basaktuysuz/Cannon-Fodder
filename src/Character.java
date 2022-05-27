@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Character {
+    Scanner input=new Scanner(System.in);
 
     protected int strength;
     protected int intelligence;
@@ -56,7 +59,7 @@ public class Character {
 
 
 
-    public void Attack(){}
+    public void Attack(Character character){}
 
     public void Pick(Item item){
         int sumWeight=0;
@@ -85,7 +88,13 @@ public class Character {
         item.display();
     }
 
-    public void specialAction(){}
+    public void specialAction(Character character){
+        if(character.weaponOnHand[0].equals(new Swords())){
+            System.out.println("How many turns you want to be stay away from fight(Max can be 4)");
+            int turns=input.nextInt();
+
+        }
+    }
 
     public void ListInventory(){
         for(int i=0;i<Inventory.size();i++){

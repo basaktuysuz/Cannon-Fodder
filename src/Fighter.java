@@ -10,4 +10,6 @@ public class Fighter extends Character {
         HP=(int)(Math.random()*(0.7*vitality+0.2*strength+0.1*intelligence-1)+1);
         System.out.println("Fighter created with " + HP + " HP! ");
     }
+
+
 }

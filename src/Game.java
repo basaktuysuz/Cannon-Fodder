@@ -17,22 +17,18 @@ public class Game {
         switch (choice) {
             case 1:
                 healer1.specialAction(fighter1);
-                fighter1.setFighterHP(healer1.givenHeal+ fighter1.fighterHP);
-                System.out.println("Fighter's hp is now : "+fighter1.getFighterHP());
-
+                System.out.println("Fighter's hp is now : "+fighter1.HP);
                 break;
 
             case 2:
                 healer1.specialAction(tank1);
-                tank1.setTankHP(healer1.givenHeal + tank1.tankHP);
-                System.out.println("Tank's hp is now : "+tank1.getTankHP());
+                System.out.println("Tank's hp is now : "+tank1.HP);
 
                 break;
 
             case 3:
-                healer1.specialAction();
-                healer1.setHealerHP(healer1.givenHeal+healer1.healerHP);
-                System.out.println("Healer's hp is now " + healer1.getHealerHP());
+                healer1.specialAction(healer1);
+                System.out.println("Healer's hp is now:"+healer1.HP);
                 break;
 
             case 4:

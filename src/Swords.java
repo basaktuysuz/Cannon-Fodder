@@ -7,6 +7,10 @@ public class Swords extends Weapons{
         super(name, weight, value, damage);
         this.swordType = swordType;
     }
+    public Swords(){
+        super();
+        setSwordType("null");
+    }
 
     public String getSwordType() {
         return swordType;
