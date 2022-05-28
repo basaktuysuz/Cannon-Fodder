@@ -5,6 +5,7 @@ public class Tank extends Character {
 
 
     public Tank(){
+        name="Trooper";
         strength=(int)(Math.random()*4+1);
         vitality=(int)(Math.random()*4+6);
         intelligence=(int)(Math.random()*4+3);

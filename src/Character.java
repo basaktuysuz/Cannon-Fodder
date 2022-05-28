@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Character {
     Scanner input=new Scanner(System.in);
-
+    protected String name;
     protected int strength;
     protected int intelligence;
     protected int vitality;
@@ -15,7 +15,7 @@ public class Character {
     protected Clothing[] clothingOnTheChar= new Clothing[1];
     protected ArrayList<Item> Inventory=new ArrayList<>();
 
-    public Character( int strength, int intelligence, int vitality, int HP) {
+    public Character( String name,int strength, int intelligence, int vitality, int HP) {
         this.strength = strength;
         this.intelligence = intelligence;
         this.vitality = vitality;
@@ -29,6 +29,46 @@ public class Character {
     }
 
 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHP() {
+        return HP;
+    }
+
+    public void setHP(int HP) {
+        this.HP = HP;
+    }
+
+    public Weapons[] getWeaponOnHand() {
+        return weaponOnHand;
+    }
+
+    public void setWeaponOnHand(Weapons[] weaponOnHand) {
+        this.weaponOnHand = weaponOnHand;
+    }
+
+    public Clothing[] getClothingOnTheChar() {
+        return clothingOnTheChar;
+    }
+
+    public void setClothingOnTheChar(Clothing[] clothingOnTheChar) {
+        this.clothingOnTheChar = clothingOnTheChar;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return Inventory;
+    }
+
+    public void setInventory(ArrayList<Item> inventory) {
+        Inventory = inventory;
+    }
 
     public int getStrength() {
         return strength;
@@ -97,7 +137,7 @@ public class Character {
             System.out.println("The item is successfully removed");
         }
         else{
-            System.out.println("We couldn't find that item in your inventory");
+            System.out.println("You do not have that item in your inventory");
         }
 
     }
