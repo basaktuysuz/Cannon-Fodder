@@ -10,25 +10,34 @@ public class Character {
     protected int intelligence;
     protected int vitality;
     protected int HP;
-
+    private double weight;
     protected Weapons[] weaponOnHand= new Weapons[1];
     protected Clothing[] clothingOnTheChar= new Clothing[1];
     protected ArrayList<Item> Inventory=new ArrayList<>();
 
     public Character( String name,int strength, int intelligence, int vitality, int HP) {
+        this.name = name;
         this.strength = strength;
         this.intelligence = intelligence;
         this.vitality = vitality;
+        this.weight = weight;
         this.HP =(int)(Math.random()*(0.7*vitality+0.2*strength+0.1*intelligence-1)+1);
     }
     public Character(){
         strength=0;
         intelligence=0;
         vitality=0;
+        weight=0;
         HP=(int)(Math.random()*(0.7*vitality+0.2*strength+0.1*intelligence-1)+1);
     }
 
+    public double getWeight() {
+        return weight;
+    }
 
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
     public String getName() {
         return name;
@@ -65,9 +74,13 @@ public class Character {
     public ArrayList<Item> getInventory() {
         return Inventory;
     }
-
+    int i;
     public void setInventory(ArrayList<Item> inventory) {
-        Inventory = inventory;
+       Inventory.add(weaponOnHand[i]);
+       Inventory.add(clothingOnTheChar[i]);
+       Inventory = inventory;
+        this.weaponOnHand = weaponOnHand;
+        this.clothingOnTheChar = clothingOnTheChar;
     }
 
     public int getStrength() {
@@ -167,10 +180,18 @@ public class Character {
 
         }
     }
+    public void addInventory(){
+        for(int c=0;weaponOnHand.length<c;c++)
+        Inventory.add(weaponOnHand[i]);
 
+        Inventory.add(clothingOnTheChar[i]);
+
+}
     public void ListInventory(){
-        for(int i=0;i<Inventory.size();i++){
-            Inventory.get(i).display();
+        for(int a=0;a<Inventory.size();a++){
+
+            System.out.println(weaponOnHand[i]);
+            System.out.println(clothingOnTheChar[i]);
         }
 
     }

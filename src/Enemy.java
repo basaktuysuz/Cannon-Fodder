@@ -23,8 +23,6 @@ public class Enemy extends Character{
         else{
             weaponOnHand[0]=new Swords("Kyanite Sword",2,4,4,"Long Sword");
         }
-
-
    }
    public void RewardItem(){
         int random=(int)(Math.random()*2+1);
@@ -34,7 +32,4 @@ public class Enemy extends Character{
         else if(random==2){}
         else{}
    }
-
-
-
 }

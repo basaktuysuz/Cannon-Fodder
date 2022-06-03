@@ -17,17 +17,7 @@ public class Wands extends Weapons {
         this.wandsType = wandsType;
     }
 
-    public static Wands newBoneWand() {
-        return new Wands("Sphinx-Bone Wand", 5, 9, 6, 5, "Bone Wand");
-    }
 
-    public static Wands newWoodWand() {
-        return new Wands("Chestnut", 6, 4, 7, 6, "Wood Wand");
-    }
-
-    public static Wands newUnicornWand() {
-        return new Wands("Malfoy's Wand", 3, 7, 5, 3, "Unicorn Hair Wand");
-    }
 
 
 }
