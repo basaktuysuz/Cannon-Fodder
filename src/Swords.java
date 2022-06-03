@@ -21,15 +21,5 @@ public class Swords extends Weapons{
     }
 
 
-    public static Swords newShortSword() {
-        return new Swords("Scissor DaggerLion Sword",1,2,4,"Short Sword");
-    }
 
-    public static Swords newLongSword() {
-        return new Swords("Kyanite Sword",2,4,4,"Long Sword");
-    }
-
-    public static Swords newScimitarSword() {
-        return new Swords("Lion Sword",4,9,5,"Scimitar ");
-    }
 }

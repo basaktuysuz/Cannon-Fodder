@@ -4,12 +4,26 @@ import java.util.Scanner;
 public class Game {
     public static void main(String[] args) {
 
+        Swords newShortSword= new Swords("Scissor DaggerLion Sword",1,2,4,"Short Sword");
+
+
+        Swords newLongSword= new Swords("Kyanite Sword",2,4,4,"Long Sword");
+
+
+        Swords newScimitarSword= new Swords("Lion Sword",4,9,5,"Scimitar ");
+
+
         Healer healer1 = new Healer();
         Tank tank1 = new Tank();
         Fighter fighter1 = new Fighter();
         Scanner input = new Scanner(System.in);
         ArrayList<Weapons> fighterInventory = new ArrayList<Weapons>();
         int turn_number = 0;
+        Weapons[] weaponOnHandFighter= new Weapons[1];
+
+        System.out.println("Your tank's HP is "+tank1.getHP());
+        fighter1.Wield(newLongSword);
+        fighter1.Attack(fighter1,tank1);
 
         System.out.println("Welcome to Cannon Fodder !!! \nYou have three characters: \n1)Healer\n2)Tank\n3)Fighter");
 

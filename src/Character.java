@@ -1,4 +1,4 @@
-import jdk.swing.interop.SwingInterOpUtils;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -104,7 +104,12 @@ public class Character {
     public void Attack(Character doingTheAttack,Character ReceivingTheAttack ){
         ReceivingTheAttack.HP=ReceivingTheAttack.HP-(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.strength);
         System.out.println("Your damage caused "+(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.strength)+" HP to the character" );
-        System.out.println("Their HP is now "+ ReceivingTheAttack.HP);
+        if(ReceivingTheAttack.getHP()<=0){
+            System.out.println("The target enemy is dead");
+        }
+        else{
+        System.out.println("Their HP is now "+ ReceivingTheAttack.HP);}
+
     }
 
     public void Pick(Item item){
