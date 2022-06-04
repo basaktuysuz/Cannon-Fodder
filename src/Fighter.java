@@ -4,7 +4,7 @@ public class Fighter extends Character {
     int stunnedEnemyCounter=0;
 
     public Fighter(){
-        name="Jago";
+
         strength=(int)(Math.random()*4+6);
         vitality=(int)(Math.random()*4+3);
         intelligence=(int)(Math.random()*4+1);

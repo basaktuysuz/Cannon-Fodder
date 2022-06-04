@@ -4,7 +4,7 @@ public class Healer extends Character {
     int givenHeal;
 
     public Healer(){
-        name="Sage";
+
         strength =(int)(Math.random()*4+3);
         vitality=(int)(Math.random()*4+1);
         intelligence=(int)(Math.random()*4+6);

@@ -20,4 +20,10 @@ public class Shields extends Weapons {
     }
 
 
+  //Burda shield stunlıyor
+   // public long stun(Character character, Enemy enemy1) {
+        //    return Math.round(character.Attack()/enemy1.getVitality());
+
+
+
 }
