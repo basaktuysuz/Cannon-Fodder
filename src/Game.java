@@ -6,13 +6,18 @@ import java.util.Random;
 public class Game {
     public static void main(String[] args) throws Exception {
 
+
         ArrayList<Shields> shieldsArrayList = new ArrayList<>();
         ArrayList<Shields> shieldsInventory = new ArrayList<>();
         ArrayList<Wands> wandsArrayList = new ArrayList<>();
         ArrayList<Wands> wandsInventory = new ArrayList<>();
         ArrayList<Swords> swordsArrayList = new ArrayList<>();
         ArrayList<Swords> swordsInventory = new ArrayList<>();
-
+        ArrayList<Score> scores = new ArrayList<>();
+        ArrayList<Wands> wearingWands = new ArrayList<>();
+        ArrayList<Swords> wearingSword = new ArrayList<>();
+        ArrayList<Shields> wearingShields = new ArrayList<>();
+        ArrayList<Enemy> enemies; // enemylerin arraylisti
 
         Wands newBoneWand = new Wands("Sphinx-Bone Wand", 5, 9, 6, 5, "Bone Wand");
         wandsArrayList.add(newBoneWand);
@@ -20,6 +25,7 @@ public class Game {
         wandsArrayList.add(newWoodWands);
         Wands newUnicornWand = new Wands("Malfoy's Wand", 3, 7, 5, 3, "Unicorn Hair Wand");
         wandsArrayList.add(newUnicornWand);
+
 
         Shields newBuckler = new Shields("Bubble Shield", 1, 2, 3, "Buckler");
         shieldsArrayList.add(newBuckler);
@@ -35,10 +41,14 @@ public class Game {
         Swords newScimitarSword = new Swords("Lion Sword", 4, 9, 5, "Scimitar ");
         swordsArrayList.add(newScimitarSword);
 
+        Fighter fighter1  = new Fighter();
+
+        Character character1 = new Character();
         Enemy enemy1 = new Enemy();
         Healer healer1 = new Healer();
         Tank tank1 = new Tank();
-        Fighter fighter1 = new Fighter();
+
+        Score score = new Score();
         Scanner input = new Scanner(System.in);
         int turn_number = 0;
 
@@ -57,7 +67,7 @@ public class Game {
         } else
             throw new Exception("Invalid gender");
         System.out.println("Your Healer's name is : " + healer1.name);
-        System.out.println("Healer's gender is:"+ gender1 );
+        System.out.println("Healer's gender is:" + gender1);
         System.out.println("Healer created with " + healer1.HP + " HP! ");
         System.out.println("Healer created with " + healer1.intelligence + " intelligence ");
         System.out.println("******************************************");
@@ -74,7 +84,7 @@ public class Game {
         } else
             throw new Exception("Invalid gender");
         System.out.println("Your Fighter's name is : " + fighter1.name);
-        System.out.println("Fighter's gender is:"+ gender2 );
+        System.out.println("Fighter's gender is:" + gender2);
         System.out.println("Fighter created with " + fighter1.HP + " HP! ");
         System.out.println("Fighter created with " + fighter1.intelligence + " intelligence ");
         System.out.println("******************************************");
@@ -92,29 +102,30 @@ public class Game {
         } else
             throw new Exception("Invalid gender");
         System.out.println("Your Tank's name is : " + tank1.name);
-        System.out.println("Tanks's gender is:"+ gender3 );
+        System.out.println("Tank's gender is:" + gender3);
         System.out.println("Tank created with " + tank1.HP + " HP! ");
         System.out.println("Tank created with " + tank1.intelligence + " intelligence ");
         System.out.println("******************************************");
+        int shieldsCounter = 0;
+        int wandsCounter = 0;
 
 
-        System.out.println("Healer's special action is healing teammates. Please select the teammate you want to give heal to.");
-        System.out.println("1 - Fighter \n2 - Tank \n3 - Healer\n4 - Exit ");
-        System.out.println("Your tank's HP is " + tank1.getHP());
+        enemy1.SetEnemy();
+        enemy1.increaseLevel();
+        SecureRandom ran = new SecureRandom();
         fighter1.Wield(newLongSword);
         fighter1.Attack(fighter1, tank1);
-
-        SecureRandom ran = new SecureRandom();
-
-        int shieldsDropChance = 50;//50 de sabit ilk %50 düşürme ihtimali var yani
+        // enemy  ölünce silah droplama kısmı
+        int shieldsDropChance = 50;//50 de sabit ilk %50 düşürme ihtimali var
         int wandsDropChance = 50;
         int swordsDropChance = 50;
         int possibilityShields = ran.nextInt(shieldsArrayList.size());
         int possibilitySwords = ran.nextInt(swordsArrayList.size());
         int possibilityWands = ran.nextInt(wandsArrayList.size());
         while (enemy1.getHP() <= 0)
-
+            System.out.println("your total score is: " + score.getValue());
             System.out.println("enemy is dead");
+
         if (ran.nextInt(100) < shieldsDropChance) {
             System.out.println("Enemy has dropped " + shieldsArrayList.get(possibilityShields).getName());
             System.out.println("Would you like to add that to your inventory?(Y for Yes, N for No)");
@@ -123,8 +134,9 @@ public class Game {
                 shieldsInventory.add(shieldsArrayList.get(possibilityShields));
                 fighter1.setWeight(fighter1.getWeight() + shieldsArrayList.get(possibilityShields).getWeight());
                 if (fighter1.getWeight() < 10) {
-                    System.out.println("You've added the armor to your inventory...");
-                    fighter1.setWeight(fighter1.getWeight() + shieldsArrayList.get(possibilityShields).getValue() * 10);
+                    System.out.println("You've added the shield to your inventory...");
+                    score.setValue(score.getValue() + (shieldsArrayList.get(possibilityShields).getValue() * 10));
+                    System.out.println("After killed enemy  your score is : " + score.getValue());
                 } else {
                     System.out.println("You cannot have item more than 10 pounds");
                     shieldsInventory.remove(shieldsArrayList.get(possibilityShields));
@@ -133,16 +145,18 @@ public class Game {
             }
         } else if (ran.nextInt(100) < wandsDropChance) {
             System.out.println("Enemy has dropped " + wandsArrayList.get(possibilityWands).getName());
+
             System.out.println("Would you like to add that to your inventory?(Y for Yes, N for No)");
             char decision = input.next().charAt(0);
             if (decision == 'Y' || decision == 'y') {
                 wandsInventory.add(wandsArrayList.get(possibilityWands));
                 fighter1.setWeight(fighter1.getWeight() + wandsArrayList.get(possibilityWands).getWeight());
                 if (fighter1.getWeight() < 10) {
-                    System.out.println("You've added the armor to your inventory...");
-                    fighter1.setWeight(fighter1.getWeight() + wandsArrayList.get(possibilityWands).getValue() * 10);
+                    System.out.println("You've added the Wand to your inventory...");
+                    score.setValue(score.getValue() + (wandsArrayList.get(possibilityWands).getValue() * 10));
+                    System.out.println("After killed enemy  your score is : " + score.getValue());
                 } else {
-                    System.out.println("You cannot have item more than 10 kilo");
+                    System.out.println("You cannot have item more than 10 pounds");
                     wandsInventory.remove(wandsArrayList.get(possibilityWands));
                     fighter1.setWeight(fighter1.getWeight() - wandsArrayList.get(possibilityWands).getWeight());
                 }
@@ -155,18 +169,99 @@ public class Game {
                 swordsInventory.add(swordsArrayList.get(possibilitySwords));
                 fighter1.setWeight(fighter1.getWeight() + swordsArrayList.get(possibilitySwords).getWeight());
                 if (fighter1.getWeight() < 10) {
-                    System.out.println("You've added the armor to your inventory...");
-                    fighter1.setWeight(fighter1.getWeight() + swordsArrayList.get(possibilitySwords).getValue() * 10);
+                    System.out.println("You've added the sword to your inventory...");
+                    score.setValue(score.getValue() + (swordsArrayList.get(possibilitySwords).getValue() * 10));
+                    System.out.println("After killed enemy  your score is : " + score.getValue());
                 } else {
                     System.out.println("You cannot have item more than 10 kilo");
                     swordsInventory.remove(swordsArrayList.get(possibilitySwords));
                     fighter1.setWeight(fighter1.getWeight() - swordsArrayList.get(possibilitySwords).getWeight());
                 }
             }
+
         } else {
             System.out.println("The enemy didn't dropped anything...");
         }
 
+        EXTRA:
+        while (true) {
+            Menus.displayMenu();
+            int firstDec = input.nextInt();
+            if (firstDec == 1) {
+                if (shieldsInventory.size() != 0 || wandsInventory.size() != 0|| swordsInventory.size()  !=0 ) {
+                    System.out.println("\t***INVENTORY***");
+                    int total = 1, armor = 0;
+                    for (Item i :shieldsInventory ) {
+                        System.out.println("ID: " + total);
+                        i.print();
+                        total++;
+                        armor++;
+                    }
+                    for (Item i : wandsInventory) {
+                        System.out.println("ID: " + total);
+                        i.print();
+                        total++;
+                    }
+                    for (Item i : swordsInventory) {
+                        System.out.println("ID: " + total);
+                        i.print();
+                        total++;
+                    }
+
+                } else
+                    System.out.println("Your inventory has no item");
+            } else if (firstDec == 2) {
+                int wear = 0, total = 1;
+                if (wearingShields.size() != 0 || wearingSword.size() != 0|| wearingWands.size() != 0) {
+                    System.out.println("*-*-*-*-*-*-*-*-*-*");
+                    System.out.println("\t***WEARING***");
+                    for (Shields s : wearingShields) {
+                        System.out.println("ID: " + total);
+                        s.print();
+                        total++;
+                        wear++;
+
+                    }
+                    for (Swords sw : wearingSword) {
+                        System.out.println("ID: " + total);
+                        sw.print();
+                        total++;
+                    }
+                    for (Wands  w : wearingWands) {
+                        System.out.println("ID: " + total);
+                        w.print();
+                        total++;
+                    }
+
+                }
+
+
+            } else if (firstDec == 2) {
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*");
+
+                if (wearingWands.size() != 0) {
+                    System.out.println("\t***Your armor is: " + wearingWands.get(0).getName());
+
+                }
+                if (wearingSword.size() != 0) {
+                    System.out.println("\t***Your shield is: " + wearingSword.get(0).getName());
+                }
+                if (wearingShields.size() != 0) {
+                    System.out.println("\t***Your shield is: " + wearingShields.get(0).getName());
+                }
+                System.out.println("\t***Your health is " + fighter1.getHP() + "HP");
+                System.out.println("\t***Total Score: " + score.getValue());
+                System.out.println("\t***Total weight: " + fighter1.getWeight());
+            } else if (firstDec == 3) {
+                break EXTRA;// runladıktan sonra 3 ü seçinde döngüden breakliyor ama daha tam editlemediğimiz için healer's special
+                //action geliyor onu da düzeltmek lazım
+            } else
+                throw new Exception("Invalid value");
+        }
+        // healers special action kısmı
+        System.out.println("Healer's special action is healing teammates. Please select the teammate you want to give heal to.");
+        System.out.println("1 - Fighter \n2 - Tank \n3 - Healer\n4 - Exit ");
+        System.out.println("Your tank's HP is " + tank1.getHP());
 
         int choice = input.nextInt();
         switch (choice) {
@@ -194,6 +289,7 @@ public class Game {
 
     }
 
+    // turn sayısını count etme
     public static int turnCount(int turn) {
         if (turn < 2) {
             turn++;
@@ -202,4 +298,6 @@ public class Game {
         }
         return turn;
     }
+
+
 }

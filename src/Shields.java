@@ -18,7 +18,12 @@ public class Shields extends Weapons {
     public void setShieldsType(String shieldsType) {
         this.shieldsType = shieldsType;
     }
-
+    public void print() {
+        super.print();
+        System.out.print("Shiels : ");
+        System.out.println("Extra Damage: " + getDamage());
+        System.out.println("*****");
+    }
 
   //Burda shield stunlıyor
    // public long stun(Character character, Enemy enemy1) {

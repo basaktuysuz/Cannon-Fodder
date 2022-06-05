@@ -5,6 +5,7 @@ public class Item {
     private String name;
     private int weight;
     private int value;
+
     public Item(){
         name=null;
         weight=0;
@@ -16,7 +17,11 @@ public class Item {
         this.weight = weight;
         this.value = value;
     }
-
+    public void print() {
+        System.out.println("Name: " + name);
+        System.out.println("Value: " + value);
+        System.out.println("Weight: " + weight);
+    }
     public String getName() {
         return name;
     }

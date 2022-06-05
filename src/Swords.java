@@ -20,6 +20,11 @@ public class Swords extends Weapons{
         this.swordType = swordType;
     }
 
-
+    public void print() {
+        super.print();
+        System.out.print("Sword: "+getName());
+        System.out.println("Extra Damage: " + getDamage());
+        System.out.println("*****");
+    }
 
 }

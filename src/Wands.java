@@ -9,6 +9,14 @@ public class Wands extends Weapons {
         this.wandsType = wandsType;
     }
 
+    public int getHealPoint() {
+        return healPoint;
+    }
+
+    public void setHealPoint(int healPoint) {
+        this.healPoint = healPoint;
+    }
+
     public String getWandsType() {
         return wandsType;
     }
@@ -18,6 +26,10 @@ public class Wands extends Weapons {
     }
 
 
-
-
+    public void print() {
+        super.print();
+        System.out.print("Wand: "+getName());
+        System.out.println("Heal point "+ getHealPoint());
+        System.out.println("*****");
+    }
 }
