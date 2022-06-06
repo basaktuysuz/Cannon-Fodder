@@ -8,4 +8,9 @@ public class Menus {
         System.out.println("\t\t3.Exit");
         System.out.println("-----------");
     }
+
+
+    public static void displayInventoryMenu(){
+        System.out.println("\t1.Wear or Use\n"+"\t2.Drop\n" +"\t3.Back To Menu");
+    }
 }

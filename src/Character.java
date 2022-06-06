@@ -10,12 +10,15 @@ public class Character {
     protected int intelligence;
     protected int vitality;
     protected int HP;
-    private double weight;
+    protected double weight;
+    protected int Damage;
+    protected Weapons wearingWeapon;
+    protected Clothing wearingClothing;
     protected Weapons[] weaponOnHand= new Weapons[1];
     protected Clothing[] clothingOnTheChar= new Clothing[1];
     protected ArrayList<Item> Inventory=new ArrayList<>();
 
-    public Character( String name,int strength, int intelligence, int vitality, int HP) {
+    public Character( String name,int strength, int intelligence, int vitality, int HP,double weight) {
         this.name = name;
         this.strength = strength;
         this.intelligence = intelligence;
@@ -107,21 +110,42 @@ public class Character {
         this.vitality = vitality;
     }
 
+    public int getDamage() {
+        return Damage;
+    }
 
+    public void setDamage(int damage) {
+        Damage = damage;
+    }
 
+    public void Attacktank(Character doingTheAttack, Character ReceivingTheAttack ){
+        ReceivingTheAttack.HP=ReceivingTheAttack.HP-(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.strength);
+        System.out.println("Your damage caused "+(int)(doingTheAttack.getDamage()*0.2*doingTheAttack.strength)+" HP to the character" );
+        if(ReceivingTheAttack.getHP()<=0){
+            System.out.println("The target enemy is dead");
+        }
+        else{
+        System.out.println("Their HP is now "+ ReceivingTheAttack.HP);}
 
-
-
-
-
-    public void Attack(Character doingTheAttack,Character ReceivingTheAttack ){
+    }
+    public void Attackfighter(Character doingTheAttack, Character ReceivingTheAttack ){
         ReceivingTheAttack.HP=ReceivingTheAttack.HP-(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.strength);
         System.out.println("Your damage caused "+(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.strength)+" HP to the character" );
         if(ReceivingTheAttack.getHP()<=0){
             System.out.println("The target enemy is dead");
         }
         else{
-        System.out.println("Their HP is now "+ ReceivingTheAttack.HP);}
+            System.out.println("Their HP is now "+ ReceivingTheAttack.HP);}
+
+    }
+    public void AttackHealer(Character doingTheAttack,Character ReceivingTheAttack ){
+        ReceivingTheAttack.HP=ReceivingTheAttack.HP-(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.intelligence);
+        System.out.println("Your damage caused "+(int)(doingTheAttack.weaponOnHand[0].getDamage()*0.2*doingTheAttack.intelligence)+" HP to the character" );
+        if(ReceivingTheAttack.getHP()<=0){
+            System.out.println("The target enemy is dead");
+        }
+        else{
+            System.out.println("Their HP is now "+ ReceivingTheAttack.HP);}
 
     }
 

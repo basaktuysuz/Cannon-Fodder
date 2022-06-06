@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Clothing extends Item {
@@ -9,8 +10,9 @@ public class Clothing extends Item {
         super(name, weight, value);
         this.protection = protection;
         this.type = type;
-    }
 
+    }
+    private ArrayList<Clothing> wearing = new ArrayList<>();
     public int getProtection() {
         return protection;
     }
