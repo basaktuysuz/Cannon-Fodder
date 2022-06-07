@@ -22,26 +22,26 @@ public class Game {
         ArrayList<Clothing> wearingArmor = new ArrayList<>();
         ArrayList<Enemy> enemies; // enemylerin arraylisti
 
-        Wands newBoneWand = new Wands("Sphinx-Bone Wand", 5, 9, 6, 5, "Bone Wand");
+        Wands newBoneWand = new Wands("Sphinx-Bone Wand", 5, 9, 6,"Wand", 5, "Bone Wand");
         wandsArrayList.add(newBoneWand);
-        Wands newWoodWands = new Wands("Chestnut", 6, 4, 7, 6, "Wood Wand");
+        Wands newWoodWands = new Wands("Chestnut", 6, 4, 7, "Wand", 6, "Wood Wand");
         wandsArrayList.add(newWoodWands);
-        Wands newUnicornWand = new Wands("Malfoy's Wand", 3, 7, 5, 3, "Unicorn Hair Wand");
+        Wands newUnicornWand = new Wands("Malfoy's Wand", 3, 7, 5, "Wand", 3, "Unicorn Hair Wand");
         wandsArrayList.add(newUnicornWand);
 
 
-        Shields newBuckler = new Shields("Bubble Shield", 1, 2, 3, "Buckler");
+        Shields newBuckler = new Shields("Bubble Shield", 1, 2, 3, "Shield","Buckler");
         shieldsArrayList.add(newBuckler);
-        Shields newSmallShield = new Shields("Aegis Shield", 2, 4, 4, "Small Shield");
+        Shields newSmallShield = new Shields("Aegis Shield", 2, 4, 4, "Shield","Small Shield");
         shieldsArrayList.add(newSmallShield);
-        Shields newTowerShield = new Shields("Great Axe", 4, 8, 5, "TowerShield");
+        Shields newTowerShield = new Shields("Great Axe", 4, 8, 5, "Shield","TowerShield");
         shieldsArrayList.add(newTowerShield);
 
-        Swords newShortSword = new Swords("Scissor DaggerLion Sword", 1, 2, 4, "Short Sword");
+        Swords newShortSword = new Swords("Scissor DaggerLion Sword", 1, 2, 4, "Sword","Short Sword");
         swordsArrayList.add(newShortSword);
-        Swords newLongSword = new Swords("Kyanite Sword", 2, 4, 4, "Long Sword");
+        Swords newLongSword = new Swords("Kyanite Sword", 2, 4, 4, "Sword","Long Sword");
         swordsArrayList.add(newLongSword);
-        Swords newScimitarSword = new Swords("Lion Sword", 4, 9, 5, "Scimitar ");
+        Swords newScimitarSword = new Swords("Lion Sword", 4, 9, 5, "Sword","Scimitar ");
         swordsArrayList.add(newScimitarSword);
 
 
@@ -49,7 +49,7 @@ public class Game {
         Enemy enemy1 = new Enemy();
         Healer healer1 = new Healer();
         Tank tank1 = new Tank();
-Fighter fighter1=new Fighter();
+        Fighter fighter1=new Fighter();
         Score score = new Score();
         Scanner input = new Scanner(System.in);
         int turn_number = 0;
@@ -57,7 +57,7 @@ Fighter fighter1=new Fighter();
         // The game's Story
         //Thread.sleep(1000);
         System.out.println("You died. You died miserably without accomplishing anything.");
-       // Thread.sleep(2500);
+       //Thread.sleep(2500);
         System.out.println("You regret not doing anything, not trying enough, not overcoming your fears.");
        // Thread.sleep(2500);
         System.out.println("You are haunted by regret. You spend your afterlife drowning in lava of penitence.");
@@ -162,7 +162,6 @@ Fighter fighter1=new Fighter();
         enemy1.increaseLevel();
         SecureRandom ran = new SecureRandom();
         character1.Wield(newLongSword);
-        character1.Attackfighter(character1,enemy1);
 
 
         // enemy  ölünce silah droplama kısmı
@@ -459,33 +458,8 @@ Fighter fighter1=new Fighter();
             } else
                 throw new Exception("Invalid value");
         }
-        // healers special action kısmı çıkacak burdan
-        System.out.println("Healer's special action is healing teammates. Please select the teammate you want to give heal to.");
-        System.out.println("1 - Fighter \n2 - Tank \n3 - Healer\n4 - Exit ");
-        System.out.println("Your tank's HP is " + tank1.getHP());
 
-        int choice = input.nextInt();
-        switch (choice) {
-            case 1:
-                healer1.specialAction(character1);
-                System.out.println("Fighter's hp is now : " + character1.HP);
-                break;
 
-            case 2:
-                healer1.specialAction(tank1);
-                System.out.println("Tank's hp is now : " + tank1.HP);
-
-                break;
-
-            case 3:
-                healer1.specialAction(healer1);
-                System.out.println("Healer's hp is now:" + healer1.HP);
-                break;
-
-            case 4:
-            default:
-
-        }
     }
     // turn sayısını count etme
     public static int turnCount(int turn) {

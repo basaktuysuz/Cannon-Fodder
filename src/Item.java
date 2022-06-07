@@ -6,16 +6,19 @@ public class Item {
     private int weight;
     private int value;
 
+
     public Item(){
         name=null;
         weight=0;
         value=0;
+
     }
 
-    public Item(String name, int weight, int value) {
+    public Item(String name, int weight, int value ) {
         this.name = name;
         this.weight = weight;
         this.value = value;
+
     }
     public void print() {
         System.out.println("Name: " + name);

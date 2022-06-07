@@ -2,8 +2,8 @@ public class Shields extends Weapons {
 
     private String shieldsType;
 
-    public Shields(String name, int weight, int value, int damage, String shieldsType) {
-        super(name, weight, value, damage);
+    public Shields(String name, int weight, int value, int damage, String itemType,String shieldsType) {
+        super(name, weight, value, damage,itemType);
         this.shieldsType = shieldsType;
     }
     public Shields(){
@@ -20,7 +20,7 @@ public class Shields extends Weapons {
     }
     public void print() {
         super.print();
-        System.out.print("Shiels : ");
+        System.out.print("Shields : ");
         System.out.println("Extra Damage: " + getDamage());
         System.out.println("*****");
     }

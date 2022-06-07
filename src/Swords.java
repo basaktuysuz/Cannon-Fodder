@@ -3,8 +3,8 @@ public class Swords extends Weapons{
     private String swordType;
 
 
-    public Swords(String name, int weight, int value, int damage, String swordType) {
-        super(name, weight, value, damage);
+    public Swords(String name, int weight, int value, int damage,String itemType, String swordType) {
+        super(name, weight, value, damage,itemType);
         this.swordType = swordType;
     }
     public Swords(){

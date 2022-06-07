@@ -3,6 +3,7 @@ public class Fighter extends Character {
 
     int stunnedEnemyCounter=0;
 
+
     public Fighter(){
         strength=(int)(Math.random()*4+6);
         vitality=(int)(Math.random()*4+3);
@@ -12,6 +13,8 @@ public class Fighter extends Character {
         this.wearingWeapon= wearingWeapon;
 
     }
+
+
 
 
 }
