@@ -10,6 +10,7 @@ public class Character {
     protected int vitality;
     protected int HP;
     protected double weight;
+    protected String gender;
     protected int Damage;
     protected Weapons wearingWeapon;
     protected Clothing wearingClothing;
@@ -18,10 +19,11 @@ public class Character {
     protected ArrayList<Item> Inventory=new ArrayList<>();
     protected boolean isStunned;
     protected boolean isInTheGame;
+    protected boolean isDead;
 
 
 
-    public Character( String name,int strength, int intelligence, int vitality, int HP) {
+    public Character( String name,int strength, int intelligence, int vitality,String gender) {
         this.name = name;
         this.strength = strength;
         this.intelligence = intelligence;
@@ -32,16 +34,38 @@ public class Character {
         this.clothingOnTheChar=clothingOnTheChar;
         isStunned=false;
         isInTheGame=true;
+        this.gender=gender;
+        isDead=false;
     }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
     public Character(){
         strength=0;
         intelligence=0;
         vitality=0;
         weight=0;
+        gender=null;
         HP=(int)(Math.random()*(0.7*vitality+0.2*strength+0.1*intelligence-1)+1);
         isStunned=false;
         isInTheGame=true;
+        isDead=false;
     }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public boolean isInTheGame() {
         return isInTheGame;
     }
@@ -147,6 +171,7 @@ public class Character {
         ReceivingTheAttack.HP=ReceivingTheAttack.HP-(int)(weaponOnHand[0].getDamage()*0.2*strength);
         System.out.println("Your attack caused "+(int)(weaponOnHand[0].getDamage()*0.2*strength)+" HP to the character" );
         if(ReceivingTheAttack.getHP()<=0){
+            ReceivingTheAttack.isDead=true;
             System.out.println("The target enemy is dead");
         }
         else{
@@ -226,5 +251,7 @@ public class Character {
             Inventory.get(a).display();
         }
 
+    }
+    public void DisplayInfo(){
     }
 }

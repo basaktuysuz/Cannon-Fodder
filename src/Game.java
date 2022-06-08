@@ -4,7 +4,23 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Game {
+    private static int level=0;
+    public static void CreateLevel(){
+        Enemy enemy=new Enemy(1);
+        ArrayList<Enemy> enemies = new ArrayList<>();
+        enemies.add(enemy);
+        for (int i = 0; i < Math.pow(2,level); i++){
+            enemy.RandomWeapon();
+            enemies.add(new Enemy(i+3));
+        }
+        System.out.println("In this level you will encounter "+Math.pow(2,level)+" enemies");
+
+
+    }
+
     public static void main(String[] args) throws Exception {
+
+
 
 
         ArrayList<Shields> shieldsArrayList = new ArrayList<>();
@@ -20,6 +36,7 @@ public class Game {
         ArrayList<Clothing> armorArrayList = new ArrayList<>();
         ArrayList<Clothing> armorInventory = new ArrayList<>();
         ArrayList<Clothing> wearingArmor = new ArrayList<>();
+        ArrayList<Enemy> enemies = new ArrayList<>();
         ArrayList<Enemy> enemies; // enemylerin arraylisti
 
         Wands newBoneWand = new Wands("Sphinx-Bone Wand", 5, 9, 6,"Wand", 5, "Bone Wand");
@@ -46,11 +63,12 @@ public class Game {
 
 
         Character character1 = new Character();
-        Enemy enemy1 = new Enemy();
         Healer healer1 = new Healer();
         Tank tank1 = new Tank();
         Fighter fighter1=new Fighter();
         Score score = new Score();
+        Enemy enemy2= new Enemy(2);
+        enemies.add(enemy2);
         Scanner input = new Scanner(System.in);
         int turn_number = 0;
 
@@ -104,15 +122,10 @@ public class Game {
             gender1 = "Woman";
         } else
             throw new Exception("Invalid gender");
-        System.out.println("Your Healer's name is : " + healer1.name);
-        System.out.println("Healer's gender is:" + gender1);
-        System.out.println("Healer created with " + healer1.HP + " HP! ");
-        System.out.println("Healer created with " + healer1.intelligence + " intelligence ");
-        System.out.println("Healer created with " + healer1.vitality + "Vitality ");
-        System.out.println("Healer created with " + healer1.strength + "strength ");
-        System.out.println("Healer created With default weapon and armor ");
-        System.out.println("******************************************");
+        healer1.setGender(gender1);
+        healer1.DisplayInfo();
 
+        //************************************************
         System.out.println("Enter your Fighter's name");
         String temp2Name = input.next();
         character1.setName(temp2Name);
@@ -124,15 +137,10 @@ public class Game {
             gender2 = "Woman";
         } else
             throw new Exception("Invalid gender");
-        System.out.println("Your Fighter's name is : " + character1.name);
-        System.out.println("Fighter's gender is:" + gender2);
-        System.out.println("Fighter created with " + fighter1.HP + " HP! ");
-        System.out.println("Fighter created with " + fighter1.intelligence + " intelligence ");
-        System.out.println("Fighter created with " + fighter1.vitality + "Vitality ");
-        System.out.println("Fighter created with " + fighter1.strength + "strength ");
-        System.out.println("Fighter created With default weapon and armor ");
-        System.out.println("******************************************");
+        fighter1.setGender(gender2);
+        fighter1.DisplayInfo();
 
+        //********************************************
 
         System.out.println("Enter your Tank's name");
         String temp3Name = input.next();
@@ -145,92 +153,29 @@ public class Game {
             gender3 = "Woman";
         } else
             throw new Exception("Invalid gender");
-        System.out.println("Your Tank's name is : " + tank1.name);
-        System.out.println("Tank's gender is:" + gender3);
-        System.out.println("Tank created with " + tank1.HP + " HP! ");
-        System.out.println("Tank created with " + tank1.intelligence + " intelligence ");
-        System.out.println("Tank created with " + tank1.vitality + "Vitality ");
-        System.out.println("Tank created with " + tank1.strength + "strength ");
-        System.out.println("Tank created With default weapon and armor ");
-        System.out.println("******************************************");
+        tank1.setGender(gender3);
+        tank1.DisplayInfo();
+        //************************************************
+
         int shieldsCounter = 0;
         int wandsCounter = 0;
         int swordsCounter=0;
         int armorCounter = 0;
 
-        enemy1.SetEnemy();
-        enemy1.increaseLevel();
+        CreateLevel();
+
         SecureRandom ran = new SecureRandom();
         character1.Wield(newLongSword);
 
 
-        // enemy  ölünce silah droplama kısmı
-        int shieldsDropChance = 50;//50 de sabit ilk %50 düşürme ihtimali var
-        int wandsDropChance = 50;
-        int swordsDropChance = 50;
-        int possibilityShields = ran.nextInt(shieldsArrayList.size());
-        int possibilitySwords = ran.nextInt(swordsArrayList.size());
-        int possibilityWands = ran.nextInt(wandsArrayList.size());
 
             System.out.println("your total score is: " + score.getValue());
+            fighter1.Wield(newLongSword);
 
 
-        if (ran.nextInt(100) < shieldsDropChance) {
-            System.out.println("Enemy has dropped " + shieldsArrayList.get(possibilityShields).getName());
-            System.out.println("Would you like to add that to your inventory?(Y for Yes, N for No)");
-            char decision = input.next().charAt(0);
-            if (decision == 'Y' || decision == 'y') {
-                shieldsInventory.add(shieldsArrayList.get(possibilityShields));
-                character1.setWeight(character1.getWeight() + shieldsArrayList.get(possibilityShields).getWeight());
-                if (character1.getWeight() < 10) {
-                    System.out.println("You've added the shield to your inventory...");
-                    score.setValue(score.getValue() + (shieldsArrayList.get(possibilityShields).getValue() * 10));
-                    System.out.println("After killed enemy  your score is : " + score.getValue());
-                } else {
-                    System.out.println("You cannot have item more than 10 pounds");
-                    shieldsInventory.remove(shieldsArrayList.get(possibilityShields));
-                    character1.setWeight(character1.getWeight() - shieldsArrayList.get(possibilityShields).getWeight());
-                }
-            }
-        } if (ran.nextInt(100) < wandsDropChance) {
-            System.out.println("Enemy has dropped " + wandsArrayList.get(possibilityWands).getName());
 
-            System.out.println("Would you like to add that to your inventory?(Y for Yes, N for No)");
-            char decision = input.next().charAt(0);
-            if (decision == 'Y' || decision == 'y') {
-                wandsInventory.add(wandsArrayList.get(possibilityWands));
-                character1.setWeight(character1.getWeight() + wandsArrayList.get(possibilityWands).getWeight());
-                if (character1.getWeight() < 10) {
-                    System.out.println("You've added the Wand to your inventory...");
-                    score.setValue(score.getValue() + (wandsArrayList.get(possibilityWands).getValue() * 10));
-                    System.out.println("After killed enemy  your score is : " + score.getValue());
-                } else {
-                    System.out.println("You cannot have item more than 10 pounds");
-                    wandsInventory.remove(wandsArrayList.get(possibilityWands));
-                    character1.setWeight(character1.getWeight() - wandsArrayList.get(possibilityWands).getWeight());
-                }
-            }
-        }  if (ran.nextInt(100) < swordsDropChance) {
-            System.out.println("Enemy has dropped " + swordsArrayList.get(possibilitySwords).getName());
-            System.out.println("Would you like to add that to your inventory?(Y for Yes, N for No)");
-            char decision = input.next().charAt(0);
-            if (decision == 'Y' || decision == 'y') {
-                swordsInventory.add(swordsArrayList.get(possibilitySwords));
-                character1.setWeight(character1.getWeight() + swordsArrayList.get(possibilitySwords).getWeight());
-                if (character1.getWeight() < 10) {
-                    System.out.println("You've added the sword to your inventory...");
-                    score.setValue(score.getValue() + (swordsArrayList.get(possibilitySwords).getValue() * 10));
-                    System.out.println("After killed enemy  your score is : " + score.getValue());
-                } else {
-                    System.out.println("You cannot have item more than 10 kilo");
-                    swordsInventory.remove(swordsArrayList.get(possibilitySwords));
-                    character1.setWeight(character1.getWeight() - swordsArrayList.get(possibilitySwords).getWeight());
-                }
-            }
 
-        } else {
-            System.out.println("The enemy didn't dropped anything...");
-        }
+
 
 
 
@@ -470,4 +415,5 @@ public class Game {
         }
         return turn;
     }
+
 }
