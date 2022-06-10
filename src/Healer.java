@@ -54,14 +54,14 @@ public class Healer extends Character {
         System.out.println("******************************************");
 
     }
-    public void HealersHealMenu(){
+    /*public void HealersHealMenu(){
         System.out.println("Healer's special action is healing teammates. Please select the teammate you want to give heal to.");
         System.out.println("1 - Fighter \n2 - Tank \n3 - Healer\n4 - Exit ");
 
 
-        /*int choice = input.nextInt();
+        int choice = input.nextInt();
         switch (choice) {
-            case 1:
+            case 1:{
                 healer1.specialAction(character1);
                 System.out.println("Fighter's hp is now : " + character1.HP);
                 break;
@@ -88,4 +88,3 @@ public class Healer extends Character {
 
 
 
-}

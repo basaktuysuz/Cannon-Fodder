@@ -229,6 +229,7 @@ public class Character {
     public void specialAction(Character receivingTheSpecialAttack){
 
         if(weaponOnHand[0].getItemType().equals("Wand")){
+            System.out.println("This special action can used by only a Healer");
 
 
         }

@@ -10,9 +10,13 @@ public class Enemy extends Character {
     private int percentage;
     private int enemyReference;
 
+    public int getEnemyReference() {
+        return enemyReference;
+    }
 
-
-
+    public void setEnemyReference(int enemyReference) {
+        this.enemyReference = enemyReference;
+    }
 
     public Enemy(int enemyReference){
         this.enemyReference=enemyReference;
@@ -51,12 +55,7 @@ public class Enemy extends Character {
     }
 
 
-    public  void increaseLevel(){
-        //a method to increase level, we implemented this metod for the readibility purposes.
-        level ++;
-        enemyAmount = (int) Math.pow(2, level);
-        System.out.println("The current level is : "+ getLevel());
-    }
+
     public void RewardItemDrop(Character character){
 
         Scanner input=new Scanner(System.in);
