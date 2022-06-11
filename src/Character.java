@@ -193,26 +193,11 @@ public class Character {
         }
 
     }
-    public void dropItem(){
-        ListInventory();
-        System.out.println("Enter the name of the item you want to drop");
-        String itemName=input.nextLine();
-        boolean found=false;
-        for(int i=0;i<Inventory.size();i++){
-            if(Inventory.get(i).getName().equals(itemName)){
-                found=true;
-                Inventory.remove(i);
-                break;
-            }
-        }
-        if(found==true){
-            System.out.println("The item is successfully removed");
-        }
-        else{
-            System.out.println("You do not have that item in your inventory");
-        }
+    public void dropItem(Item item){
 
-    }
+                Inventory.remove(item);
+
+            }
 
     public void Wield(Weapons weapons){
         weaponOnHand[0]=weapons;
