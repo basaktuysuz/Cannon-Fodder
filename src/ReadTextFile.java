@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -7,7 +6,7 @@ import java.util.Scanner;
 public class ReadTextFile {
     public static void readRecords(){
         System.out.println("Enemy Board");
-        System.out.printf("%s%s%s%s%s%s%n"," ","reference "," | ","Current situation");
+        System.out.printf(" ","reference "," | ","Current situation");
         Scanner s = null;
         try {
             s = new Scanner(new File("enemies.txt"));

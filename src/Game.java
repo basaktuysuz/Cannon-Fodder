@@ -113,6 +113,8 @@ public class Game {
         } else
             throw new Exception("Invalid gender");
         healer1.DisplayInfo();
+        System.out.println("Healer's gender is : " + gender1);
+        System.out.println("******************************************");
 
         System.out.println("Enter your Fighter's name");
         String temp2Name = input.next();
@@ -126,6 +128,8 @@ public class Game {
         } else
             throw new Exception("Invalid gender");
         fighter1.DisplayInfo();
+        System.out.println("Fighter's gender is  : " + gender2);
+        System.out.println("******************************************");
 
 
         System.out.println("Enter your Tank's name");
@@ -140,6 +144,8 @@ public class Game {
         } else
             throw new Exception("Invalid gender");
         tank1.DisplayInfo();
+        System.out.println("Tank's gender is : " + gender3);
+        System.out.println("******************************************");
 
         myTeam.add(fighter1);
         myTeam.add(tank1);
