@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Se116_ProjectNP">
+    <output-path>$USER_HOME$/Masaüstü/Se116_Project_jar2</output-path>
+    <root id="archive" name="Se116_ProjectNP.jar">
+      <element id="module-output" name="Se116_Project" />
+    </root>
+  </artifact>
+</component>

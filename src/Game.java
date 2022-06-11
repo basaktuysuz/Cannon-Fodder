@@ -63,37 +63,37 @@ public class Game {
         tank1.Wield(newTowerShield);
 
         //The game's Story
-        //Thread.sleep(1000);
+        Thread.sleep(1000);
         System.out.println("You died. You died miserably without accomplishing anything.");
-        // Thread.sleep(2500);
+        Thread.sleep(2500);
         System.out.println("You regret not doing anything, not trying enough, not overcoming your fears.");
-        // Thread.sleep(2500);
+        Thread.sleep(2500);
         System.out.println("You are haunted by regret. You spend your afterlife drowning in lava of penitence.");
-        //  Thread.sleep(2500);
+        Thread.sleep(2500);
         System.out.println("Waiting for your day of reckoning.");
-        // Thread.sleep(2500);
+        Thread.sleep(2500);
         System.out.println("You wait,wait,wait.....");
-        // Thread.sleep(4000);
+        Thread.sleep(4000);
         System.out.println("You waited for eternity. You no longer remember your past life " +
                 "\nThere is only misery, regret, bitterness,wrath........");
-        // Thread.sleep(3000);
+         Thread.sleep(3000);
         System.out.println("You sit still and wait. Wait for another eternity. The day will come eventually....");
-        //  Thread.sleep(4000);
+         Thread.sleep(4000);
         System.out.println("WELCOME TO THE CANNON FODDER!!!");
-        //   Thread.sleep(4000);
+         Thread.sleep(4000);
         System.out.println("The player listen carefully.\nYou are given an another chance. You were so miserable that " +
                 "THE GODS TOOK PITY ON YOU.");
-        //   Thread.sleep(4000);
+         Thread.sleep(4000);
         System.out.println("You will be facing countless enemy and try to gain kill points");
-        //  Thread.sleep(3000);
+         Thread.sleep(3000);
         System.out.println("If you collect the needed kill points before you die you will have another chance in life");
-        //  Thread.sleep(3000);
+        Thread.sleep(3000);
         System.out.println("You will be reborn and another life. You will get everything you wanted");
-        //  Thread.sleep(3000);
+         Thread.sleep(3000);
         System.out.println("In this game, EVERY WAY IS FAIR.");
-        //    Thread.sleep(3000);
+         Thread.sleep(3000);
         System.out.println("Now stop tormenting yourself and start killing for your sake.\n");
-        // Thread.sleep(3000);
+        Thread.sleep(3000);
         System.out.println("MAY THE GODS BE WITH YOU.");
         //End of Game's Story
 
