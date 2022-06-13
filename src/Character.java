@@ -227,8 +227,6 @@ public class Character {
             System.out.println("You chose to use the special action of shield.\nYou can stun the enemy");
             receivingTheSpecialAttack.setStunned(true);
 
-
-
         }
     }
 
